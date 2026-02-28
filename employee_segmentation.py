@@ -486,14 +486,17 @@ cluster_counts_r2 = Counter(kmeans_r2_labels)
 for c, cnt in sorted(cluster_counts_r2.items()):
     print(f"  Cluster {c}: {cnt} employees ({cnt/len(df)*100:.1f}%)")
 
-# naming clusters based on their characteristics from the heatmap
-# these names will make more sense after deep EDA
+# naming clusters based on actual runtime profiles (refined after deep EDA)
+# Cluster 0: Age=45.1, Income=$13,349, Exp=22.8yr, Attrition=8.7%
+# Cluster 1: Age=36.1, Income=$5,284, Exp=9.5yr, Attrition=11.3%
+# Cluster 2: Age=35.5, Income=$4,720, Exp=8.3yr, Attrition=13.4%
+# Cluster 3: Age=33.5, Income=$4,693, Exp=8.0yr, Attrition=28.1%
 cluster_names = {0: 'Experienced Loyal',
-                 1: 'Young At-Risk', 
-                 2: 'Mid-Career Stable',
-                 3: 'Senior High-Performers'}
+                 1: 'Mid-Level Moderate', 
+                 2: 'Mid-Career Moderate',
+                 3: 'Young At-Risk'}
 print(f"\nCluster names: {cluster_names}")
-# these are preliminary names - might refine after deep EDA
+# Names verified against runtime cluster profiles
 
 print("\n[OK] Section 8 complete - KMeans Round 2 done")
 
@@ -639,8 +642,8 @@ for rank, (name, rate) in enumerate(ranked.items(), 1):
     print(f"  #{rank}: {name} ({rate:.1f}% attrition)")
 
 # key observations from cluster deep dive:
-# 1. Young At-Risk cluster has the highest attrition - younger, lower pay
-# 2. Senior High-Performers have lowest attrition - well paid, experienced
+# 1. Young At-Risk (Cluster 3) has the highest attrition - youngest, lowest pay
+# 2. Experienced Loyal (Cluster 0) has lowest attrition - well paid, most experienced
 # 3. OverTime is a HUGE factor in attrition across all clusters
 # 4. Single employees appear more in high-attrition clusters
 # 5. Lower monthly income strongly correlates with attrition risk
@@ -661,13 +664,13 @@ print("="*60)
 print("""
 --- CLUSTER SUMMARY TABLE ---
 
-| Metric                | Experienced Loyal | Young At-Risk   | Mid-Career Stable | Senior High-Performers |
-|-----------------------|-------------------|-----------------|-------------------|------------------------|
-| Avg Age               | ~38-42            | ~28-32          | ~33-37            | ~42-48                 |
-| Monthly Income        | Medium            | Low             | Medium            | High                   |
-| Total Working Years   | 10-15             | 2-5             | 6-10              | 15+                    |
-| OverTime Rate         | Low               | High            | Moderate          | Low                    |
-| Attrition Risk        | Low               | HIGHEST         | Moderate          | Lowest                 |
+| Metric                | Experienced Loyal | Mid-Level Moderate | Mid-Career Moderate | Young At-Risk          |
+|-----------------------|-------------------|--------------------|---------------------|------------------------|
+| Avg Age               | ~42-48            | ~34-38             | ~33-37              | ~28-35                 |
+| Monthly Income        | High              | Medium             | Medium              | Low                    |
+| Total Working Years   | 15+               | 8-12               | 6-10                | 2-10                   |
+| OverTime Rate         | Moderate          | High               | Moderate            | High                   |
+| Attrition Risk        | Lowest (8.7%)     | Low (11.3%)        | Moderate (13.4%)    | HIGHEST (28.1%)        |
 """)
 
 print("--- HIGH ATTRITION CLUSTER: Young At-Risk ---")
@@ -689,7 +692,7 @@ Recommendation 2: Overtime Management & Work-Life Balance
 
 Recommendation 3: Career Development & Mentorship Programs
   Young employees often leave because they don't see a clear growth path.
-  Structured mentorship programs pairing them with Senior High-Performers,
+  Structured mentorship programs pairing them with Experienced Loyal employees,
   clear promotion criteria, and professional development budgets demonstrate
   investment in their future.
 """)
@@ -708,12 +711,14 @@ Recommendation 2: Recognition Programs - implement peer recognition systems
 
 print("--- LOW ATTRITION CLUSTERS ---")
 print("""  
-Experienced Loyal: Stay because of accumulated tenure and stability.
+Experienced Loyal (Cluster 0): Oldest (45.1yr), highest paid ($13,349),
+  most experienced (22.8yr). Attrition only 8.7%.
   MAINTAIN current work-life balance policies. Don't disrupt what works.
+  LEVERAGE them as mentors for Young At-Risk employees.
 
-Senior High-Performers: Most valuable cluster - experienced, high-performing.
-  ENSURE compensation stays competitive with market rates. Provide
-  challenging projects and leverage them as mentors for Young At-Risk.
+Mid-Level Moderate (Cluster 1): Age ~36, income $5,284, 9.5yr experience.
+  Only 11.3% attrition. ENSURE compensation stays competitive with market
+  rates. Provide challenging projects and structured raise schedules.
 """)
 
 print("""  
