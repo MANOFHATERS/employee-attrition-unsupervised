@@ -5,7 +5,6 @@
 ![Python](https://img.shields.io/badge/Python-3.8+-blue?logo=python&logoColor=white)
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-ML-orange?logo=scikit-learn&logoColor=white)
 ![Status](https://img.shields.io/badge/Status-Complete-brightgreen)
-![License](https://img.shields.io/badge/License-MIT-yellow)
 
 ---
 
@@ -269,12 +268,6 @@ The pipeline generates **22 plots** across 6 categories:
 | **matplotlib** | Publication-quality visualizations |
 | **seaborn** | Statistical plotting |
 | **SciPy** | Kruskal-Wallis H-test, statistical functions |
-
----
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
