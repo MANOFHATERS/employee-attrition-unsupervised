@@ -1,9 +1,9 @@
 # 🔍 Employee Segmentation & Attrition Analysis
 
-> **Unsupervised Machine Learning pipeline** that discovers natural employee behavioral segments from the IBM HR dataset and links them to attrition risk — enabling HR to move from reactive exit interviews to proactive, segment-targeted retention strategies.
+> **Unsupervised Learning pipeline** that discovers natural employee behavioral segments from the IBM HR dataset and links them to attrition risk — enabling HR to move from reactive exit interviews to proactive, segment-targeted retention strategies.
 
 ![Python](https://img.shields.io/badge/Python-3.8+-blue?logo=python&logoColor=white)
-![scikit-learn](https://img.shields.io/badge/scikit--learn-ML-orange?logo=scikit-learn&logoColor=white)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-Clustering-orange?logo=scikit-learn&logoColor=white)
 ![Status](https://img.shields.io/badge/Status-Complete-brightgreen)
 
 ---
@@ -32,7 +32,7 @@ This project applies **unsupervised learning** (zero labeled data) to automatica
 
 ### What Makes This Project Different
 
-| Feature | Typical ML Project | This Project |
+| Feature | Typical Project | This Project |
 |---------|-------------------|--------------|
 | Approach | Single K-Means run | **Two-round design** — Round 1 failure → diagnosis → Round 2 correction |
 | Validation | Visual inspection | **Silhouette + Kruskal-Wallis + Bootstrap stability** |
@@ -272,6 +272,6 @@ The pipeline generates **22 plots** across 6 categories:
 ---
 
 <p align="center">
-  <b>Built with ❤️ for Unsupervised Machine Learning</b><br>
+  <b>Built with ❤️ for Unsupervised Learning</b><br>
   <i>IBM HR Employee Attrition Dataset · K-Means · PCA · Statistical Validation</i>
 </p>
